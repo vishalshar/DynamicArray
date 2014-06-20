@@ -1,0 +1,110 @@
+public class DynamicArray 
+{ 
+    // Array which stores the final output 
+    private int number_list[] ; 
+    // Size keeps the current location of the last element 
+    private int size; 
+    // Capacity keeps track of the current size of the array 
+    private int capacity; 
+    /** 
+     * Get the number of elements in the array. 
+     *  
+     * @return the number of elements in the array. 
+     */
+    public int getSize() 
+    { 
+        return size; 
+    } 
+      
+    /** 
+     * Get element at specified index. 
+     *  
+     * @param index index of the element to be read. 
+     * @return element at specified index. 
+     */
+    public int get(int index) 
+    { 
+        return number_list[index]; 
+    } 
+      
+    /** 
+     * Add value to the end of the array. 
+     * For example, if we append 5 to the array [1, 2, 3, 4], 
+     * we get [1, 2, 3, 4, 5]. 
+     *  
+     * @param value the value to add. 
+     */
+    public void append(int value) 
+    { 
+        // check if the array if full 
+        if(capacity == size) 
+        { 
+            // create a temp array and copy all elements from number_list to temp_array 
+            int temp_array[] = new int[capacity]; 
+            temp_array = number_list; 
+            // increase the capacity of the array twice 
+            capacity*=2; 
+            number_list= new int[capacity]; 
+            // copy all the elements back to original array 
+            for(int i=0;i<temp_array.length;i++) 
+                number_list[i]=temp_array[i]; 
+              
+        } 
+        // Copy the value and increase the size by one 
+        number_list[size] = value; 
+        ++size; 
+    } 
+    /** 
+     * Remove element at specified index. 
+     * When an element is removed, it must be replaced with the last 
+     * element in the array, unless it is the last element. 
+     * For example, if we remove the element at position 2 
+     * from the array [1, 2, 3, 4, 5], we get [1, 2, 5, 4]. 
+     *  
+     * @param index index of the element to be removed. 
+     */
+    public void remove(int index) 
+    { 
+        // If last element to be deleted 
+        if(index == (size-1)) 
+        { 
+            --size; 
+        } 
+        // else replace the index element with last element 
+        else
+        { 
+            int last_element; 
+            last_element = number_list[size-1]; 
+            number_list[index] = last_element; 
+            --size; 
+        } 
+    } 
+      
+    /** 
+     * Returns String representation of array with 
+     * values separated by a space. 
+     * For example: "5 0 6 0". 
+     *  
+     * @return String representation of array. 
+     */
+      
+    public String toString() 
+    { 
+        String output = ""; 
+        for(int i=0;i<size;i++) 
+        { 
+            output += number_list[i] + " "; 
+        } 
+        return output; 
+    } 
+    /**s 
+     * CONSTRUCTUR 
+     * Initializing size,capacity and array 
+     */
+    DynamicArray() 
+    { 
+        size=0; 
+        capacity=4; 
+        number_list = new int[capacity]; 
+    } 
+}
