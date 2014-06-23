@@ -1,0 +1,57 @@
+
+import java.util.Scanner;
+public class CompactArray 
+{
+	/**
+	 * Program to generate output list after removing all the invalid elements.
+	 */
+	 
+	public static void main(String[] args) 
+	{
+	
+		// dynamic array to keep 1st row of input
+		DynamicArray arrDynamic1stLine = new DynamicArray();
+		// dynamic array to keep 2nd row of input
+		DynamicArray arrDynamic2ndLine = new DynamicArray();
+		// dynamic array to keep the final output
+		DynamicArray arrDynamicResult = new DynamicArray();
+		
+		// take the number of rows
+		Scanner input= new Scanner(System.in);
+		int iter = input.nextInt();
+		int i,cases;
+		for(int z=0;z<iter;z++)
+	    {
+	    
+			// number of cases in a row
+			cases = input.nextInt();
+			for(i=0;i<cases;i++)
+			{
+			
+				// append the first line of input numbers to dynamic array
+				arrDynamic1stLine.append(input.nextInt());
+			}
+			for(i=0;i<cases;i++)
+			{
+				// append 2nd line of input numbers to dynamic array
+				arrDynamic2ndLine.append(input.nextInt());
+			}
+			for(i=0;i<arrDynamic1stLine.getSize();i++)
+			{
+			
+				// check for all 1 and append the corresponding value in result array 
+    			if(arrDynamic2ndLine.get(i) == 1)
+    			{
+					arrDynamicResult.append(arrDynamic1stLine.get(i));
+    			}
+			}
+			System.out.println(arrDynamicResult.toString());
+			
+			// reinitialize all the DynamicArray objects
+			arrDynamic1stLine = new DynamicArray();
+			arrDynamic2ndLine = new DynamicArray();
+			arrDynamicResult = new DynamicArray();
+	    }
+		input.close();
+	}
+}
