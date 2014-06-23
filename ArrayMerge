@@ -1,0 +1,135 @@
+
+import java.util.Scanner;
+public class ArrayMerge 
+{
+	/**
+	 * Program to merge two sorted lists into one list that keeps all the elements in sorted order.
+	 * MERGE SORT
+	 */
+	 
+	public static void main(String[] args) 
+	{
+		// dynamic array to keep 1st row of input
+		DynamicArray arrDynamic1stLine = new DynamicArray();
+		// dynamic array to keep 2nd row of input
+		DynamicArray arrDynamic2ndLine = new DynamicArray();
+		// dynamic array to keep the final output
+		DynamicArray arrDynamicResult = new DynamicArray();
+		
+		// take the number of cases
+		Scanner input= new Scanner(System.in);
+		int iter = input.nextInt();
+		int i,cases;
+		int counter1,counter2,totalsize;
+		
+		
+		for(int z=0;z<iter;z++)
+	    {
+	    
+			// number of letter in a row
+			cases = input.nextInt();
+			
+			
+			for(i=0;i<cases;i++)
+			{
+				// append the first line of input numbers to dynamic array
+				arrDynamic1stLine.append(input.nextInt());
+			}
+			cases = input.nextInt();
+			
+			for(i=0;i<cases;i++)
+			{
+				// append 2nd line of input numbers to dynamic array
+				arrDynamic2ndLine.append(input.nextInt());
+			}
+			
+			
+			// implement merging in the arrays and put the resultant in the third array
+			// Using merging algorithm
+			totalsize = arrDynamic1stLine.getSize() + arrDynamic2ndLine.getSize();
+			counter1=0;
+			counter2=0;
+			
+			
+			for(i=0;i<totalsize;i++)
+			{
+				// append the smaller element in the result array
+				if(arrDynamic1stLine.get(counter1) < arrDynamic2ndLine.get(counter2))
+				{
+					arrDynamicResult.append(arrDynamic1stLine.get(counter1));
+					++counter1;
+					// if the first array is all appended 
+					// append all the element of the other array to result 
+					if(counter1 == arrDynamic1stLine.getSize())
+					{
+						for(i=0;counter2!=arrDynamic2ndLine.getSize();i++)
+						{
+							arrDynamicResult.append(arrDynamic2ndLine.get(counter2));
+							counter2++;
+						}
+						break;
+					}
+				}
+				
+				// append the smaller element in the result array
+				if(arrDynamic1stLine.get(counter1) > arrDynamic2ndLine.get(counter2))
+				{
+					arrDynamicResult.append(arrDynamic2ndLine.get(counter2));
+					++counter2;
+					
+					// if the second array is all appended 
+					// append all the element of the other array to result 
+					if(counter2 == arrDynamic2ndLine.getSize())
+					{
+						for(i=0;counter1!=arrDynamic1stLine.getSize();i++)
+						{
+							arrDynamicResult.append(arrDynamic1stLine.get(counter1));
+							counter1++;
+						}
+						break;
+					}
+				}
+				
+				
+				//if both element are equal append both
+				if(arrDynamic1stLine.get(counter1) == arrDynamic2ndLine.get(counter2))
+				{
+					arrDynamicResult.append(arrDynamic1stLine.get(counter1));
+					arrDynamicResult.append(arrDynamic2ndLine.get(counter2));
+					++counter1;
+					++counter2;
+					
+					// if the second array is all appended 
+					// append all the element of the other array to result 
+					if(counter2 == arrDynamic2ndLine.getSize())
+					{
+						for(i=0;counter1!=arrDynamic1stLine.getSize();i++)
+						{
+							arrDynamicResult.append(arrDynamic1stLine.get(counter1));
+							counter1++;
+						}
+						break;
+					}
+					
+					// if the first array is all appended 
+					// append all the element of the other array to result 
+					if(counter1 == arrDynamic1stLine.getSize())
+					{
+						for(i=0;counter2!=arrDynamic2ndLine.getSize();i++)
+						{
+							arrDynamicResult.append(arrDynamic2ndLine.get(counter2));
+							counter2++;
+						}
+						break;
+					}
+				}
+			}
+			// print the merged array and initialize all the Dynamic array 
+			System.out.println(arrDynamicResult.toString());
+			arrDynamic1stLine = new DynamicArray();
+			arrDynamic2ndLine = new DynamicArray();
+			arrDynamicResult = new DynamicArray();
+	    }
+		input.close();
+	}
+}
