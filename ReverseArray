@@ -1,0 +1,44 @@
+
+import java.util.Scanner;
+public class ReverseArray extends DynamicArray
+{
+	/**
+	 * Code to reverse an array using dynamic array : Problem 1
+	 */
+	public static void main(String[] args) 
+	{
+		DynamicArray arrayDynamic = new DynamicArray();
+		
+		// take the number of rows
+		Scanner input= new Scanner(System.in);
+		int iter = input.nextInt();
+		int z,i;
+		
+		//int iter_int = Integer.parseInt(iter);
+		for(z=0;z<iter;z++)
+	    {
+	    
+			// number of cases
+			int cases = input.nextInt();
+			for(i=0;i<cases;i++)
+			{
+			
+				// append all numbers to dynamic array
+				arrayDynamic.append(input.nextInt());
+			}	
+			
+			String output="";
+			for(i=(arrayDynamic.getSize()-1);i>=0;i--)
+			{
+			
+				// Print it in reverse order
+				output+=arrayDynamic.get(i) + " ";
+			}
+			
+			System.out.println(output);
+			arrayDynamic = new DynamicArray();
+	    }
+		input.close();
+	}
+
+}
