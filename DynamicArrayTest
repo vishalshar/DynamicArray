@@ -1,0 +1,48 @@
+
+import java.util.Scanner;
+public class DynamicArrayTest extends DynamicArray
+{
+	/**
+	 * Main to implement problem 0 : Dynamic array
+	 */
+	public static void main(String[] args) 
+	{
+	
+		// take the number of rows
+		Scanner input= new Scanner(System.in);
+		String iter = input.nextLine();
+		int iter_int = Integer.parseInt(iter);
+		for(int z=0;z<iter_int;z++)
+	    {
+	    
+			// take the line of inputs
+	    	String cases = input.nextLine();
+	    	String delim= " ";
+	    	
+	    	// divide them and store in tokens
+	        String tokens[] = cases.split(delim);
+	        String add="a";
+	        String delete="d";
+	        for(int i=1;i<tokens.length-1;)
+	        {
+	        
+	        	// check for append or delete then perform respective action
+	        	int number= Integer.parseInt(tokens[i+1]);
+	        	if(tokens[i].equals(add))
+	        	
+	        		//append
+	        		arrayDynamic.append(number);
+	        	else if(tokens[i].equals(delete))
+	        	
+	        		//delete
+	        		arrayDynamic.remove(number);
+	        	i+=2;
+	        }
+	        
+	        // print and re initialize dynamic array object
+	        System.out.println(arrayDynamic.toString());
+	        arrayDynamic = new DynamicArray();
+	    }
+		input.close();
+	}
+}
