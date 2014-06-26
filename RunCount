@@ -1,0 +1,51 @@
+
+import java.util.Scanner;
+public class RunCount 
+{
+	/**
+	 * PROBLEM 3:
+	 * Program to find series of one or more consecutive elements with the same value.
+	 */
+	public static void main(String[] args)
+	{
+		DynamicArray arrayDynamic = new DynamicArray();
+		
+		// take the number of rows
+		Scanner input= new Scanner(System.in);
+		int iter = input.nextInt();
+		
+		//int iter_int = Integer.parseInt(iter);
+		int count=1,i,z,cases;
+		for(z=0;z<iter;z++)
+	    {
+	    
+			// number of cases in a row
+			cases = input.nextInt();
+			if(cases==0)
+			{
+				System.out.println(0);
+				break;
+			}
+			
+			for(i=0;i<cases;i++)
+			{
+				// append all numbers to dynamic array
+				arrayDynamic.append(input.nextInt());
+			}
+			
+			for(i=(arrayDynamic.getSize()-1);i>0;i--)
+			{
+				// get the numbers and check for run
+				if((arrayDynamic.get(i) != arrayDynamic.get(i-1)))
+						count+=1;
+			}
+			
+			// print and re initialize count and dynamic array
+			System.out.println(count);
+			count=1;
+			arrayDynamic = new DynamicArray();
+	    }
+	    
+		input.close();
+	}
+}
