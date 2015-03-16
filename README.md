@@ -37,3 +37,7 @@ Output:
 5 0 6 0
 5 0 6 0
 1 4 6 5
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vishalshar/dynamicarray/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
